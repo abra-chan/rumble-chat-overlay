@@ -1,0 +1,62 @@
+/* === FULL TRANSPARENT BACKGROUND + NO BORDER === */
+body, html, .chat-container, .media-page-chat-aside-chat-wrapper-fixed, main, .container {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Hide cookie / consent popups */
+div[class*="cookie"], div[id*="cookie"], .consent, .cookie-banner, .cc-window, [data-testid*="cookie"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+}
+
+/* Hide input box, header, sign-in, sticky rants */
+.chat-form-overflow-wrapper, .chat-message-form, .chat--signin-container, 
+.chat-sticky-rants, .chat-history--rant-sticky--pill, .chat--header {
+    visibility: hidden !important;
+    background: transparent !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Make actual chat messages transparent background + no borders */
+*:not(.chat-history--subscribed) {
+    background: transparent !important;
+    border: 0 !important;
+}
+
+.chat-history--subscribed,
+.chat-history--row {
+    background: rgba(0, 0, 0, 0.4) !important; /* slight dark tint so text is readable */
+    border: none !important;
+    border-radius: 6px !important;
+}
+
+/* Extra cleanup */
+#chat-history-list, .chat-history--list {
+    background: transparent !important;
+}
+/* === FADE OLD MESSAGES AFTER ~5 MINUTES === */
+.chat-history--row {
+    animation: abraFadeOut 300s linear forwards !important; /* 300 seconds = 5 minutes */
+    opacity: 1;
+}
+
+/* Fade animation */
+@keyframes abraFadeOut {
+    0%   { opacity: 1; }
+    95%  { opacity: 1; }   /* stays visible almost full time */
+    100% { opacity: 0; }   /* fades out at the end */
+}
+
+/* Optional: Also shrink/collapse after fade so they don't take space */
+.chat-history--row[style*="opacity: 0"] {
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+.news_notification { display: none !important; }
